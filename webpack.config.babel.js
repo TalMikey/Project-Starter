@@ -6,7 +6,11 @@ import { developmentConfig } from './config/dev.config';
 import { productionConfig } from './config/prod.config';
 
 const baseConfig = {
-    entry: path.join(__dirname, './client/index.js'),
+    entry: {
+        main: path.join(__dirname, './client/index.js'),
+        exterior: path.join(__dirname, './client/src/app/exterior/index.js'),
+        shell: path.join(__dirname, './client/src/app/shell/index.js'),
+    },
     output: {
         path: path.join(__dirname, './dist/server/client'),
         filename: '[name].[hash].js',
@@ -50,7 +54,12 @@ const baseConfig = {
             filename: 'index.html',
             inject: 'body'
         }),
-    ],
+    ], 
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     resolve: {
         extensions: ['.js', '.less', '.css', '.html']
     },
@@ -59,7 +68,7 @@ const baseConfig = {
     }
 };
 
-const mergeOptions = (objValue, srcValue) => {
+const mergeOptions = (objValue, srcValue) => {
     if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
     }
