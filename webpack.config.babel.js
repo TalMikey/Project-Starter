@@ -30,10 +30,6 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
                 test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
                     {

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import PrivateRoute from '../common/routes/private-route'
+import { ThemeProvider } from '@material-ui/styles';
+
+import AuthRoute from '../common/routes/auth-route';
+import theme from '../common/style/theme';
 
 import Exterior from './exterior';
-import App from './shell';
+import Shell from './shell';
 
 export default () => (
-    <Switch>
-        <Route path='/login' component={Exterior}></Route>
-        <PrivateRoute exact component={App}></PrivateRoute>
-    </Switch>
+    <ThemeProvider theme={theme}>
+        <Switch>
+            <Route path='/login' component={Exterior}></Route>
+            <AuthRoute exact component={Shell}></AuthRoute>
+        </Switch>
+    </ThemeProvider>
 );
