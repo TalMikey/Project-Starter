@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline } from '@material-ui/core';
 
-import AuthRoute from '../common/routes/auth-route';
 import theme from '../common/style/theme';
 
 import Exterior from './exterior';
@@ -13,8 +12,8 @@ export default () => (
     <ThemeProvider theme={theme}>
         <CssBaseline>
             <Switch>
-                <Route path='/auth' component={Exterior}></Route>
-                <AuthRoute exact component={Shell}></AuthRoute>
+                <Route path='/auth' component={Exterior}></Route>   
+                <Route component={Shell}></Route>
             </Switch>
         </CssBaseline>
     </ThemeProvider>

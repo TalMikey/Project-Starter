@@ -2,8 +2,7 @@ export const centerdText = {
     textAlign: 'center'
 }
 
-export const requiredInput = { 
-    required: true, 
+export const textInput = {
     fullWidth: true, 
     autoFocus: true, 
     variant: 'outlined' 

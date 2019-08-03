@@ -4,15 +4,15 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { container } from '../../../common/style/container';
 import { form } from '../../../common/style/form';
-import { centerdText, requiredInput } from '../../../common/style/text';
+import { centerdText, textInput } from '../../../common/style/text';
 
 const primaryColor = { color: 'primary' };
 
 export default () => (
     <Grid style={container} container>
         <form style={form}>
-            <TextField label='Name' {...requiredInput} />
-            <TextField label='Password' type='password' {...requiredInput} />
+            <TextField label='Name' {...textInput} required />
+            <TextField label='Password' type='password' {...textInput} required />
             <FormControlLabel label='Remember me'
                 control={<Checkbox value='remember' {...primaryColor} />} />
             <Button type='submit' fullWidth variant='contained' {...primaryColor} >Sign In</Button>
