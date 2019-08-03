@@ -1,4 +1,4 @@
-import path from 'path';
+import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import _ from 'lodash';
 
@@ -7,12 +7,10 @@ import { productionConfig } from './config/prod.config';
 
 const baseConfig = {
     entry: {
-        main: path.join(__dirname, './client/index.js'),
-        exterior: path.join(__dirname, './client/src/app/exterior/index.js'),
-        shell: path.join(__dirname, './client/src/app/shell/index.js'),
+        main: resolve(__dirname, './client/index.js')
     },
     output: {
-        path: path.join(__dirname, './dist/server/client'),
+        path: resolve(__dirname, './dist/server/client'),
         filename: '[name].[hash].js',
         publicPath: '/'
     },
@@ -46,14 +44,19 @@ const baseConfig = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, './client/index.html'),
+            template: resolve(__dirname, './client/index.html'),
             filename: 'index.html',
             inject: 'body'
-        }),
-    ], 
+        })
+    ],
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            cacheGroups: {
+                vendors: {
+                    chunks: 'all',
+                    test: resolve(__dirname, './node_modules')
+                }
+            }
         }
     },
     resolve: {

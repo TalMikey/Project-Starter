@@ -9,7 +9,7 @@ export default ({ component: Component, ...rest }) => (
             ? (<Component {...props} />)
             : (<Redirect
                 to={{
-                    pathname: "/login",
+                    pathname: "/auth/login",
                     state: { from: props.location }
                 }}
             />)
